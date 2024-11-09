@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Family Room</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+   <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #0A1E21, #193940, #0E2A2D);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #fff;
+        }
+
+        .room-container {
+        display: flex;
+        flex-direction: row;
+        max-width: 1200px;
+        width: 100%;
+        gap: 10px;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 1);
+        padding: 20px;
+        box-sizing: border-box;
+        overflow-x:hidden;
+    }
+    .pricing-container, .photo-container {
+        flex: 1;
+    }
+    @media (max-width: 768px) {
+        .room-container {
+            flex-direction: column;
+        }
+        .photo-container {
+            order: 1;
+        }
+        .pricing-container {
+            order: 2; 
+        }
+    }
+        /* Pricing and description on the left */
+        .pricing-container {
+            padding: 20px;
+            background: transparent;
+            border-radius: 8px;
+        }
+
+        .pricing-description h2 {
+            color: #FDD835; 
+            margin-bottom: 20px;
+            font-size: 26px;
+        }
+
+        .pricing-description {
+            font-size: 18px;
+            color: #fff;
+        }
+        .pricing-container ul {
+           padding: 0;
+           list-style-type: none;
+        }
+
+        .pricing-container li {
+         margin-bottom: 10px;
+         display: flex;
+         align-items: center;
+        }
+        .icon-list {
+    display: flex;
+    flex-wrap: wrap; 
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    gap: 20px; 
+}
+
+.icon-list li {
+    display: flex;
+    align-items: center;
+    flex-basis: calc(50% - 10px); 
+}
+
+.icon-list i {
+    margin-right: 10px;
+    color: #FDD835; 
+    font-size: 18px;
+}
+        .pricing-container li i {
+         margin-right: 10px;
+         color: #FDD835; 
+         font-size: 18px;
+        }
+
+        /* Icons beside room features */
+        .pricing-container li:before {
+            margin-right: 10px;
+            font-size: 18px;
+            color: #FDD835; /* Matching gold icon color */
+        }
+
+        .pricing-options {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .pricing-option {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            cursor: pointer;
+        }
+
+        .pricing-option input {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 2px solid #FDD835;
+            margin-right: 10px;
+            position: relative;
+        }
+
+        .pricing-option input:checked::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #FDD835;
+            transform: translate(-50%, -50%);
+        }
+
+        .pricing-option label {
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        /* Call-to-action buttons */
+        .buttons-container {
+            margin-top: 20px;
+            display: flex;
+            gap: 20px;
+        }
+
+        .buttons-container button {
+            padding: 12px 25px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-weight: 600;
+        }
+
+        .go-back-button {
+            background-color: #F44336;
+            color: white;
+        }
+
+        .reserve-button {
+            background-color: #4CAF50;
+            color: white;
+        }
+        
+        .buttons-container button:hover {
+            opacity: 0.8;
+        }
+
+        .photo-container {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .photo-container img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+    }
+    .nav-button {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+    }
+
+    .prev-button {
+        left: 10px;
+    }
+
+    .next-button {
+        right: 10px;
+    }
+    .prev-button::before,
+.next-button::before {
+    content: '';
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-style: solid;
+}
+
+.prev-button::before {
+    border-width: 10px 12px 10px 0;
+    border-color: transparent white transparent transparent; /* Left arrow */
+}
+
+.next-button::before {
+    border-width: 10px 0 10px 12px;
+    border-color: transparent transparent transparent white; /* Right arrow */
+}
+
+/* Remove the text from the buttons and style them */
+.prev-button,
+.next-button {
+    width: 40px;  
+    height: 40px; 
+    background-color: rgba(0, 0, 0, 0.5); 
+    border: none;
+    border-radius: 50%; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease; 
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); 
+}
+
+/* Hover effects to make it more interactive */
+.prev-button:hover,
+.next-button:hover {
+    background-color: rgba(255, 255, 255, 0.3); 
+    transform: scale(1.1); 
+}
+
+.prev-button:active,
+.next-button:active {
+    transform: scale(0.95); 
+}
+
+
+    </style>
+</head>
+<body>
+    <form id="reservationForm" action="calendar.html" method="GET">
+        <div class="room-container">
+            <!-- Pricing section -->
+            <div class="pricing-container">
+                <div class="pricing-description">
+                    <h2>Family Room</h2>
+                    <p>Good for 4 persons, Bring the whole family together in our spacious Family Room, designed for comfort and convenience. Enjoy quality time with loved ones in a cozy and practical space. </p>
+                </div>
+                
+                <ul class="icon-list">
+                    <li><i class="fas fa-bed"></i> 2 Queen-sized bed</li>
+                    <li><i class="fas fa-chair"></i> 2 Chairs</li> <!-- Added chairs -->
+                    <li><i class="fas fa-table"></i> 1 Table</li> <!-- Added table -->
+                    <li><i class="fas fa-snowflake"></i> Air conditioned</li>
+                    <li><i class="fas fa-bath"></i> Private Bathroom</li>
+                    <li><i class="fas fa-tv"></i> TV</li>
+                    <li><i class="fas fa-wifi"></i> Free WiFi</li>
+                    <li><i class="fas fa-toilet-paper"></i> Complementary toiletries</li>
+                    <li><i class="fas fa-ruler-horizontal"></i> 2 Blanket</li>
+                    <li><i class="fas fa-bed"></i> 4 Pillows</li>
+                    <li><i class="fas fa-shower"></i> 4 Towels</li>
+                </ul>
+                
+
+                <div class="pricing-options">
+                    <div class="pricing-option">
+                        <input type="radio" id="option1" name="pricing" value="380">
+                        <label for="option1">6 hours for ₱800.00</label>
+                    </div>
+                    <div class="pricing-option">
+                        <input type="radio" id="option2" name="pricing" value="750">
+                        <label for="option2">12 hours for ₱1,700.00</label>
+                    </div>
+                    <div class="pricing-option">
+                        <input type="radio" id="option3" name="pricing" value="1100">
+                        <label for="option3">24 hours for ₱2,000.00</label>
+                    </div>
+                </div>
+
+                <div class="buttons-container">
+                    <button class="go-back-button" type="button" onclick="window.location.href='booking.html'">Go Back</button>
+                    <button class="reserve-button" type="submit">Reserve</button>
+                </div>
+            </div>
+
+            <!-- Photo and navigation section -->
+            <div class="photo-container">
+                <button class="nav-button prev-button" type="button"></button>
+                <img id="roomPhoto" src="F2.jpg" alt="Economy Room">
+                <button class="nav-button next-button" type="button"></button>
+            </div>
+        </div>
+    </form>
+
+    <script>
+        const photos = ['F2.jpg','F3.jpg', 'F6.jpg', 'F7.jpg', 'F8.jpg'];
+        let currentPhotoIndex = 0;
+        const roomPhoto = document.getElementById('roomPhoto');
+        
+        document.querySelector('.prev-button').addEventListener('click', () => {
+            currentPhotoIndex = (currentPhotoIndex === 0) ? photos.length - 1 : currentPhotoIndex - 1;
+            roomPhoto.src = photos[currentPhotoIndex];
+        });
+
+        document.querySelector('.next-button').addEventListener('click', () => {
+            currentPhotoIndex = (currentPhotoIndex === photos.length - 1) ? 0 : currentPhotoIndex + 1;
+            roomPhoto.src = photos[currentPhotoIndex];
+        });
+
+        document.getElementById('reservationForm').addEventListener('submit', (event) => {
+            const selectedOption = document.querySelector('input[name="pricing"]:checked');
+            if (!selectedOption) {
+                alert('Please select a pricing option.');
+                event.preventDefault();
+            } else {
+                localStorage.setItem('selectedPricing', selectedOption.value);
+            }
+        });
+    </script>
+</body>
+</html>

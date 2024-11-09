@@ -1,0 +1,81 @@
+/* Sidebar icons styles */
+.sidebar-icons {
+    position: fixed;
+    left: -100px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: left 0.3s ease;
+    display: none;
+}
+
+.sidebar-icons.active {
+    left: 0;
+    display: block;
+}
+
+/* Toggle button styles */
+#toggleSidebar {
+    position: fixed;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    z-index: 1000;
+    background-color: #9bf272;
+    border: none;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Inner circle */
+#toggleSidebar .inner-circle {
+    background-color: #7abf5a;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover and active effects */
+#toggleSidebar:hover {
+    background-color: #26a526;
+    transform: scale(1.1);
+}
+
+#toggleSidebar:active {
+    background-color: #23a123;
+    transform: scale(1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Change inner circle to gray on click */
+#toggleSidebar:active .inner-circle {
+    background-color: gray;
+}
+
+/* Media queries for mobile responsiveness */
+@media (max-width: 768px) {
+    .sidebar-icons {
+        top: 40%;
+    }
+
+    #toggleSidebar {
+        top: 40%;
+    }
+}
+
+@media (max-width: 480px) {
+    .sidebar-icons {
+        top: 30%;
+    }
+
+    #toggleSidebar {
+        top: 30%;
+    }
+}

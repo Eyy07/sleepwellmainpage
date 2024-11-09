@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sleepwell Apartelle Booking</title>
+    <link rel="stylesheet" href="booking1.25.css">
+    <link rel="stylesheet" href="booking1.22.css">
+    <link rel="stylesheet" href="chatsupport4.css">
+    <link rel="stylesheet" href="booking4.2.css">
+    <link rel="stylesheet" href="booking3.css">
+    <link rel="stylesheet" href="cre2.css">
+    <link rel="stylesheet" href="sidebar3.css">
+    <script src="script2.js"></script>
+    <script src="cre.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Merriweather:wght@400&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <img src="logo.jpg" alt="Sleepwell Apartelle Logo" style="height: 50px; width: auto; margin-right: 10px;">
+                <span class="sleepname">Sleepwell Apartelle</span>
+            </div>
+            <div class="burger-menu" onclick="toggleNav()">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#rooms">Rooms</a></li>
+                <li><a href="#aboutus">About Us</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="cancel_booking.html">Cancel Booking</a></li>
+                <li><a href="login.html">Admin</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <button id="toggleSidebar" onclick="toggleSidebar()"> <div class="inner-circle"></div> </button>
+
+    <!-- Icons Sidebar -->
+    <div class="sidebar-icons" id="sidebar">
+        <a href="#home"><i class="fas fa-home"></i></a>
+        <a href="#rooms"><i class="fas fa-bed"></i></a>
+        <a href="#aboutus"><i class="fas fa-info-circle"></i></a>
+        <a href="#services"><i class="fas fa-briefcase"></i></a>
+        <a href="cancel_booking.html"><i class="fas fa-times-circle"></i></a>
+        <a href="login.html"><i class="fas fa-user"></i></a>
+    </div>
+
+<script>
+
+     // Function to toggle the sidebar visibility and update the toggle button
+     function toggleSidebar() {
+        const sidebar = document.getElementById('sidebar');
+        const toggleBtn = document.getElementById('toggleSidebar');
+
+        // Toggle the 'active' class to show/hide sidebar
+        sidebar.classList.toggle('active');
+
+      // Check if the sidebar is active to change the button text and position
+if (sidebar.classList.contains('active')) {  
+    toggleBtn.style.left = '40px'; // Move the button to the right when the sidebar is open
+} else {
+    toggleBtn.style.left = '1px'; // Move the button back to the original position
+}
+
+    }
+ document.addEventListener('scroll', function() {
+    const navbar = document.querySelector('.navbar');
+    const sidebarIcons = document.querySelector('.sidebar-icons');
+    if (window.scrollY > 100) {
+        navbar.classList.add('scrolled');
+    } else {
+        navbar.classList.remove('scrolled');
+    }
+});
+
+    function toggleNav() {
+    const navLinks = document.querySelector('.nav-links');
+    navLinks.classList.toggle('show');
+}
+</script>
+
+  <!-- Hero Section -->
+<section id="home" class="hero-section">
+    <button id="booknow-button">
+        <img id="booknow-overlay" src="booknow350.png" alt="Book Now">
+    </button>    
+    <div class="navigation2-dots">
+        <span class="dot active" data-index="0"></span>
+        <span class="dot" data-index="1"></span>
+        <span class="dot" data-index="2"></span>
+    </div>
+    <div class="hero-text">
+        <h4>Welcome to</h4>
+        <h1>SLEEPWELL APARTELLE</h1>
+    </div>
+</section>
+
+        <script>
+    document.getElementById('booknow-button').onclick = function() {
+        // Assuming rooms-section is an ID of a section on the same page
+        document.getElementById('rooms').scrollIntoView({ behavior: 'smooth' });
+   };
+            document.addEventListener('DOMContentLoaded', function() {
+                const dots = document.querySelectorAll('.dot');
+                let currentIndex = 0;
+                const images = ['BUILDINGBACKGROUND.png', 'BACKGROUND.png', 'BUILDINGBACKGROUND.png'];
+            
+                // Function to set background image based on index
+                function setBackground(index) {
+                    document.querySelector('.hero-section').style.backgroundImage = `url('${images[index]}')`;
+                    dots.forEach(dot => dot.classList.remove('active'));
+                    dots[index].classList.add('active');
+                }
+            
+                // Set up dot click listeners
+                dots.forEach(dot => {
+                    dot.addEventListener('click', function() {
+                        const index = parseInt(dot.getAttribute('data-index'));
+                        currentIndex = index;
+                        setBackground(index);
+                        resetAnimation();
+                    });
+                });
+            
+                // Function to reset the animation to restart sliding
+                function resetAnimation() {
+                    document.querySelector('.hero-section').style.animation = 'none';
+                    document.querySelector('.hero-section').offsetHeight; // Trigger reflow
+                    document.querySelector('.hero-section').style.animation = 'slideBackground 15s infinite';
+                }
+            
+                // Automatic sliding
+                setInterval(() => {
+                    currentIndex = (currentIndex + 1) % images.length;
+                    setBackground(currentIndex);
+                }, 5000); 
+            });
+            </script>
+            
+            <div class="chat-support" onclick="toggleChat()">
+                <div class="chat-bubble">
+                    <div class="chat-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <span>Chat with us!</span>
+                </div>
+            </div>
+            
+            <div class="chat-box" id="chat-box" style="display: none;">
+                <div class="chat-header">
+                    <div class="header-icon">
+                        <i class="fas fa-robot"></i> <!-- Bot icon -->
+                    </div>
+                    <h3>Chat Support</h3>
+                    <button class="close-btn" onclick="toggleChat()">×</button>
+                </div>                             
+                <div class="chat-content">
+                    <div class="message received">
+                        <p>Hi! How can I help you today?</p>
+                    </div>
+                </div>
+                <div class="suggestions">
+                    <button onclick="sendSuggestion('Specify your operating hours?')">Specify your operating hours...</button>
+                    <button onclick="sendSuggestion('How can I book a room?')">How can I book a room?...</button>
+                    <button onclick="sendSuggestion('What is your contact email?')">What is your contact email?...</button>
+                </div>
+                <div class="chat-input">
+                    <input type="text" id="chat-input" placeholder="Type your message..." />
+                    <button onclick="sendMessage()">Send</button>
+                </div>
+            </div>
+            
+        <div class="moto">
+            <h1>Discover Your Perfect Getaway at Sleepwell Apartelle</h1>
+            <p>Experience unparalleled comfort and relaxation in our meticulously designed rooms—your ultimate retreat awaits.</p>
+        </div>
+
+    <!-- Place Section -->
+    <section id="rooms" class="rooms-section">
+<section id="unique-place-section" class="unique-place-section">
+    <div class="unique-place-container">
+        <h2 class="section-title">
+            OUR <span class="highlight">ROOMS</span>
+        </h2>
+        <div class="unique-place-row">
+            <div class="unique-place-item">
+                <img src="economyroom.jpg" alt="Place Photo 1" class="unique-place-photo" id="place-photo-1">
+                <h3 class="unique-place-title">Economy Room</h3>
+                <p class="unique-place-p">₱ 380.00</p>
+                <div class="unique-place-actions">
+                    <button class="unique-place-book-now-button" onclick="window.location.href='economy.html'">Book Now</button>
+                    <div class="unique-place-reviews"><span class="rate-us-text">Rate Us:</span>
+                        <i class="fa fa-star unique-place-star-icon" onclick="window.location.href='rate.php'"></i>
+                    </div>
+                </div>
+            </div>   
+            <div class="unique-place-item">
+                <img src="deluxeroom.jpg" alt="Place Photo 2" class="unique-place-photo" id="place-photo-2">
+                <h3 class="unique-place-title">Deluxe Room</h3>
+                <p class="unique-place-p">₱ 480.00</p>
+                <div class="unique-place-actions">
+                    <button class="unique-place-book-now-button" onclick="window.location.href='deluxeroom.html'">Book Now</button>
+                    <div class="unique-place-reviews"><span class="rate-us-text">Rate Us:</span>
+                        <i class="fa fa-star unique-place-star-icon" onclick="window.location.href='ratefordeluxe.php'"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="unique-place-item">
+                <img src="familyroom.jpg" alt="Place Photo 3" class="unique-place-photo" id="place-photo-3">
+                <h3 class="unique-place-title">Family Room</h3>
+                <p class="unique-place-p">₱ 800.00</p>
+                <div class="unique-place-actions">
+                    <button class="unique-place-book-now-button" onclick="window.location.href='familyroom.html'">Book Now</button>
+                    <div class="unique-place-reviews"><span class="rate-us-text">Rate Us:</span>
+                        <i class="fa fa-star unique-place-star-icon"onclick="window.location.href='rateforfamily.php'"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="unique-place-item">
+                <img src="superroom.jpg" alt="Place Photo 4" class="unique-place-photo" id="place-photo-4">
+                <h3 class="unique-place-title">Super Deluxe</h3>
+                <p class="unique-place-p">₱ 700.00</p>
+                <div class="unique-place-actions">
+                    <button class="unique-place-book-now-button" onclick="window.location.href='superroom.html'">Book Now</button>
+                    <div class="unique-place-reviews"><span class="rate-us-text">Rate Us:</span>
+                        <i class="fa fa-star unique-place-star-icon"onclick="window.location.href='rateforsuperdeluxe.php'"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</section>
+
+<!-- Overlay for Enlarged Photo -->
+<div id="unique-overlay" class="unique-overlay"></div>
+
+ <!-- About Us Section with Map and Building -->
+<section id="aboutus" class="aboutus-section">
+    <div class="container">
+        <div class="aboutus-content">
+            <div class="aboutus-text conter01">
+                <h2 class="section-title">
+                    <span class="highlight">ABOUT</span> US
+                </h2>
+                <p></p>
+                <p></p>
+                <p></p>
+                <p>HELLO !</p>
+              <p> Welcome to Sleepwell Apartelle, located in the vibrant city of San Jose del Monte. We offer cozy rooms designed for comfort, paired with modern amenities for your convenience. Our welcoming atmosphere ensures you feel right at home during your stay.</p>
+
+                <p>Enjoy our comfortable bedding and take advantage of our exceptional service, carefully tailored to make your experience stress-free. Our friendly staff is always ready to assist you with any request, ensuring your needs are met. Whether you are here for leisure or business, we are committed to making your stay memorable.</p>
+                
+                <p>Conveniently located near local attractions, our apartelle offers easy access to transportation links for your travel needs. Whether you're exploring the area or heading to your next destination, Sleepwell Apartelle is perfectly situated. We take pride in being your ideal home away from home.</p>
+                
+                <!-- Hidden content -->
+                <div id="more-content" style="display: none;">
+                    <p>At Sleepwell Apartelle, we strive to ensure every guest enjoys a pleasant and comfortable stay. We offer personalized services tailored to suit your individual needs, making sure you feel well-cared-for during your time with us. Our modern facilities and relaxing environment provide the perfect escape from your daily routine.</p>
+                
+                    <p>Our dedicated staff is here to make your stay as seamless as possible, offering assistance with any requests you may have. Whether you’re staying with us for a quick getaway or an extended trip, we ensure that every detail is taken care of. From our convenient location to our excellent service, Sleepwell Apartelle is the perfect choice for any traveler.</p>
+                </div>
+
+<!-- See more link -->
+<a id="see-more-link" href="javascript:void(0)" onclick="showMore()">See more...</a>
+           <p></p>
+                <p></p>
+                <p></p>
+                <a href="https://www.facebook.com/profile.php?id=100063553304564&mibextid=ZbWKwL" target="_blank">
+                    <i class="fab fa-facebook-square" style="font-size: 25px; color: #bac8d9;"></i>
+                </a>
+    
+                <!-- Telephone Icon -->
+                <i class="fas fa-phone" id="phoneIcon" style="font-size: 25px; color: #bac8d9;"></i>
+    
+                <!-- Email Icon -->
+                <a href="mailto:apartelle.sleepwell@yahoo.com">
+                    <i class="fas fa-envelope" style="font-size: 25px; color: #bac8d9;"></i>
+                </a>
+                <a href="https://www.google.com/maps/search/?api=1&query=Sleepwell Apatelle+Dr.+E.+V.+Roque+Sr.+Ave+Bagong+Buhay+1,+Sapang+Palay,+Bulacan,+3024" target="_blank">
+                    <i class="fas fa-map-marker-alt" style="font-size: 25px; color: #bac8d9;"></i>
+                </a>
+                <P></P>
+            </div>                
+        <div class="circle1-shape">
+     <img src="editedbuilding.png" alt="Image Inside Circle"> <!-- Replace 'your-image.jpg' with the actual image file -->
+                </div>  
+                </div>
+    </div>
+</section>
+
+    <!-- Our Services Section -->
+    <section id="services" class="services-section">
+        <h2 class="section-title">Our <span class ="highlight" > Services</span></h2>
+        <div class="collage-container1">
+            <div class="unique1-collage">
+                <div class="unique1-photo-wrapper unique1-portrait1-wrapper">
+                    <img src="sarisari.jpg" alt="Portrait 1" class="unique1-photo unique1-portrait1">
+                    <div class="photo-text">Sleepwell Apartelle is equipped with an on-site sari-sari store, enhancing your comfort and convenience during your stay.</div>
+                </div>
+                <div class="unique1-landscape-group unique1-landscape-group1">
+                    <div class="unique1-photo-wrapper unique1-landscape1-wrapper">
+                        <img src="cctv.jpg" alt="Landscape 1" class="unique1-photo unique1-landscape1">
+                        <div class="photo-text"> Sleepwell Apartelle offers comprehensive CCTV surveillance throughout the premises.</div>
+                    </div>
+                    <div class="unique1-photo-wrapper unique1-landscape2-wrapper">
+                        <img src="view.jpg" alt="Landscape 2" class="unique1-photo unique1-landscape2">
+                        <div class="photo-text">Sleepwell Apartelle offers a captivating view for your enjoyment.</div>
+                    </div>
+                </div>
+                <div class="unique1-photo-wrapper unique1-portrait2-wrapper">
+                    <img src="parking.jpg" alt="Portrait 2" class="unique1-photo unique1-portrait2">
+                    <div class="photo-text">Sleepwell Apartelle features on-site parking to accommodate your vehicle with ease.</div>
+                </div>
+                <div class="unique1-landscape-group unique1-landscape-group2">
+                    <div class="unique1-photo-wrapper unique1-landscape3-wrapper">
+                        <img src="fireexit.jpg" alt="Landscape 3" class="unique1-photo unique1-landscape3">
+                        <div class="photo-text">Sleepwell Apartelle is equipped with a fire exit for your safety and emergency preparedness.</div>
+                    </div>
+                    <div class="unique1-photo-wrapper unique1-landscape4-wrapper">
+                        <img src="cashier.jpg" alt="Landscape 4" class="unique1-photo unique1-landscape4">
+                        <div class="photo-text">Sleepwell Apartelle has a dedicated cashier and staff to assist you during your stay.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+   
+    <section id="services" class="services-section">
+        <h2 class="section-title">Our <span class ="highlight" > Credentials</span></h2>
+        <div class="container">
+            <div id="external-content"></div>
+            </div>
+            </section>
+  
+            <div class="cre-wrapper">
+    <div class="cre-container">
+        <!-- 1. Philippines Health Certificate -->
+        <div class="cre-box" onclick="showModal('img1')">
+            <div class="cre-icon">
+                <i class="fas fa-leaf"></i> 
+            </div>
+            <h3 class="name">EMB Certificate</h3>
+            <p class="text">Issued by the Environmental Management Bureau to certify compliance with environmental standards.</p>
+            <img id="img1" src="CERTIFICATEOFENVIRONMENTALMANAGEMENTBUREAU.jpg" class="modal-image" alt="EMB Certificate">
+        </div>
+        <!-- 2. Payment Form -->
+        <div class="cre-box" onclick="showModal('img2')">
+            <div class="cre-icon">
+                <i class="fas fa-file-invoice-dollar"></i>
+            </div>
+            <h3  class="name">Payment Form</h3>
+            <p class="text">A document that confirms payment for services or goods, required for official transactions.</p>
+            <img id="img2" src="CERTIFICATEOFPAYMENTFORM.jpg" class="modal-image" alt="Philippines Health Certificate">
+        </div>
+
+        <!-- 3. SSS Membership -->
+        <div class="cre-box" onclick="showModal('img3')">
+            <div class="cre-icon">
+                <i class="fas fa-id-badge"></i>
+            </div>
+            <h3  class="name">SSS Membership</h3>
+            <p class="text">Membership issued by the Social Security System for employees and self-employed individuals.</p>
+            <img id="img3" src="CERTIFICATEOFMEMBERSHIP.jpg" class="modal-image" alt="Philippines Health Certificate">
+        </div>
+
+        <!-- 4. Certificate of Registration -->
+        <div class="cre-box" onclick="showModal('img4')">
+            <div class="cre-icon">
+                <i class="fas fa-certificate"></i>
+            </div>
+            <h3 class="name">Certificate of Registration</h3>
+            <p class="text">A legal document that affirms the business is registered with the Bureau of Internal Revenue (BIR).</p>
+            <img id="img4" src="CERTIFICATEOFREGISTRATION.jpg" class="modal-image" alt="Philippines Health Certificate">
+        </div>
+
+        <!-- 5. Fire Safety Certificate -->
+        <div class="cre-box" onclick="showModal('img5')">
+            <div class="cre-icon">
+                <i class="fas fa-fire-extinguisher"></i>
+            </div>
+            <h3  class="name">Fire Safety Certificate</h3>
+            <p class="text">Certification from the Bureau of Fire Protection ensuring compliance with fire safety standards.</p>
+            <img id="img5" src="CERTIFICATEOFFIRESAFETY.jpg" class="modal-image" alt="Philippines Health Certificate">
+        </div>
+
+        <!-- 6. DTI Permit -->
+        <div class="cre-box" onclick="showModal('img6')">
+            <div class="cre-icon">
+                <i class="fas fa-clipboard-check"></i>
+            </div>
+            <h3  class="name">DTI Permit</h3>
+            <p class="text">Issued by the Department of Trade and Industry, confirming that the business name is registered.</p>
+            <img id="img6" src="CERTIFICATEOFDTI.jpg" class="modal-image" alt="Philippines Health Certificate">
+        </div>
+
+        <!-- 7. Sanitary Permit to Operate -->
+        <div class="cre-box" onclick="showModal('img7')">
+            <div class="cre-icon">
+                <i class="fas fa-shield-virus"></i>
+            </div>
+            <h3  class="name">Sanitary Permit to Operate</h3>
+            <p class="text">Certification ensuring that the business meets sanitary standards required for operation.</p>
+            <img id="img7" src="CERTIFICATEOFSANITARYPERMITTOOPPERATE.jpg" class="modal-image" alt="Philippines Health Certificate">
+        </div>
+
+        <!-- 8. Barangay Clearance -->
+        <div class="cre-box" onclick="showModal('img8')">
+            <div class="cre-icon">
+                <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <h3  class="name">Barangay Clearance</h3>
+            <p class="text">Local government clearance affirming compliance with requirements to operate within a barangay.</p>
+            <img id="img8" src="CERTIFICATEOFBARANGAYCLEARANCE.jpg" class="modal-image" alt="Philippines Health Certificate">
+        </div>
+
+        <!-- 9. Business Permit -->
+        <div class="cre-box" onclick="showModal('img9')">
+            <div class="cre-icon">
+                <i class="fas fa-briefcase"></i>
+            </div>
+            <h3  class="name">Business Permit</h3>
+            <p class="text">Issued by the local government, allowing the business to operate legally within a jurisdiction.</p>
+            <img id="img9" src="CERTIFICATEOFBUSINESSPERMIT.jpg" class="modal-image" alt="Philippines Health Certificate">
+        </div>
+    </div>
+    </div>
+
+    <div id="imageModal" class="modal" onclick="closeModal()">
+        <span class="modal-close">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const image = document.querySelector('.circle1-shape img');
+    const initialTransform = 'translateX(-50%) translateY(100px)'; // Initial state (hidden)
+
+    // Set initial state for the image
+    image.style.opacity = '0';
+    image.style.transform = initialTransform;
+
+    function handleScroll() {
+        const rect = image.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+        const isInView = rect.top < windowHeight && rect.bottom > 0;
+
+        if (isInView) {
+            // Animate the image upwards into view
+            image.style.opacity = '1';
+            image.style.transform = 'translateX(-50%) translateY(0)'; // Move image to its original position
+        } else {
+            // Optionally hide the image or set it to its original position when out of view
+            image.style.opacity = '0';
+            image.style.transform = initialTransform; // Hide image by moving it down
+        }
+    }
+
+    // Initial check
+    handleScroll();
+
+    // Check on scroll
+    window.addEventListener('scroll', handleScroll);
+});
+
+
+    const photos = document.querySelectorAll('.unique-place-photo');
+    const overlay = document.getElementById('unique-overlay');
+
+    photos.forEach(photo => {
+        photo.addEventListener('click', () => {
+            photo.classList.add('enlarged');
+            overlay.style.display = 'block';
+        });
+    }); 
+
+    overlay.addEventListener('click', () => {
+        document.querySelectorAll('.unique-place-photo').forEach(photo => {
+            photo.classList.remove('enlarged');
+        });
+        overlay.style.display = 'none';
+    });
+
+        // Show the phone number when the phone icon is clicked
+        document.getElementById("phoneIcon").addEventListener("click", function() {
+            document.getElementById("phonePopup").style.display = "block";
+        });
+
+        // Hide the phone number popup when the close button is clicked
+        document.getElementById("closePopup").addEventListener("click", function() {
+            document.getElementById("phonePopup").style.display = "none";
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.has('login_success')) {
+                alert('You have successfully logged in!');
+            }
+        });
+// ang script na ito ay para sa see more.. ng about us 
+function showMore() {
+    var moreContent = document.getElementById("more-content");
+    var seeMoreLink = document.getElementById("see-more-link");
+
+    if (moreContent.style.display === "none") {
+        moreContent.style.display = "block";
+        seeMoreLink.textContent = "See less...";
+    } else {
+        moreContent.style.display = "none";
+        seeMoreLink.textContent = "See more...";
+    }
+}
+
+</script>
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section footer-address">
+                <p>&copy; 2024 Sleepwell Apartelle. All rights reserved.</p>
+            </div>
+            <div class="footer-section footer-links">
+                <h4>Quick Links</h4>
+                <a href="privacypolicy.html">Privacy Policy</a>
+                <a href="termsofservices.html">Terms of Service</a>
+            </div>
+            <div class="footer-section social-media">
+                <h4>Follow Us</h4>
+                <a href="https://www.facebook.com/profile.php?id=100063553304564&mibextid=ZbWKwL" target="_blank" aria-label="Facebook">
+                    <i class="fab fa-facebook-square" style="font-size: 25px; color: black;"></i>
+                </a>
+                <i class="fas fa-phone" id="phoneIcon" style="font-size: 25px; color: black;"></i>
+                <a href="mailto:apartelle.sleepwell@yahoo.com" aria-label="Email">
+                    <i class="fas fa-envelope" style="font-size: 25px; color: black;"></i>
+                </a>
+                <a href="https://www.google.com/maps/search/?api=1&query=Sleepwell Apartelle+Dr.+E.+V.+Roque+Sr.+Ave+Bagong+Buhay+1,+Sapang+Palay,+Bulacan,+3024" target="_blank" aria-label="Location">
+                    <i class="fas fa-map-marker-alt" style="font-size: 25px; color: black;"></i>
+                </a>
+            </div>
+            <div class="footer-section newsletter-signup">
+                <p>Subscribe to our newsletter for updates:</p>
+                <form action="/subscribe" method="post">
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+            <div class="footer-section footer-hours">
+                <h4>Operating Hours</h4>
+                <p>Open 24 Hours, 7 Days a Week</p>
+            </div>
+            <div class="footer-section footer-contact">
+                <h4>Contact Us</h4>
+                <p><i class="fas fa-map-pin"></i> CF Bldg B57 Purok 1 Barangay Bagong Buhay, San Jose Del Monte, Philippines, 3023</p>
+                <p><i class="fas fa-phone"></i> Phone: (+63) 997 671 1242</p>
+            </div>
+            <div class="footer-section developer-credits">
+                <img src="logo.jpg" alt="Hexaforce Logo" class="footer-logo">
+                <p>Developed by Hexaforce</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

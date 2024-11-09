@@ -1,0 +1,456 @@
+
+.review {
+    margin: 15px 0;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.review p {
+    margin: 5px 0;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #bac8d9;
+    color: #193940;
+    transition: background-color 0.3s, color 0.3s;
+}
+.hamburger {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+    transition: transform 0.3s ease;
+}
+.hamburger div {
+    width: 30px;
+    height: 3px;
+    background-color: #fff;
+    margin: 5px 0;
+    transition: 0.3s;
+}
+.menu a {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+.menu a:hover {
+    background-color: #12262a;
+}
+.content {
+    margin-left: 50px;
+    padding: 5px;
+}
+.section {
+    display: none;
+}
+.section.active {
+    display: block;
+}
+h1, h2 {
+    color: #333;
+}
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+h2 {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 20px;
+}
+table, th, td {
+    border: 1px solid #ddd;
+}
+th, td {
+    padding: 12px;
+    text-align: left;
+}
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+tr {
+    background-color: #f2f2f2;
+}
+.form-container {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: auto;
+}
+.form-container label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+.form-container input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.form-container button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+.form-container button:hover {
+    background-color: #45a049;
+}
+.welcome-text {
+    font-size: 1.2em;
+    line-height: 1.6;
+}
+/* Sidebar Menu */
+.menu {
+position: fixed;
+top: 0;
+left: -500px; /* Initially hidden off-screen */
+width: 250px;
+height: 100%;
+background-color: #193940;
+color: white;
+transition: left 0.3s ease;
+padding: 20px;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+overflow-y: auto; 
+}
+
+.menu.active {
+left: 0; /* Slide in when active */
+}
+
+/* Logo Styling */
+.logo {
+text-align: center;
+margin-bottom: 20px;
+}
+
+.logo-image {
+max-width: 70%; 
+height: auto;
+}
+
+/* Log Out Button Styling */
+.logout {
+position: absolute;
+bottom: 20px;
+left: 20px;
+width: calc(100% - 40px);
+padding: 10px 20px;
+background-color: #ff5c5c;
+border: none;
+color: white;
+cursor: pointer;
+text-align: center;
+border-radius: 4px;
+}
+
+.logout:hover {
+background-color: #ff4444;
+}
+/* Container for the shapes */
+.shape-container {
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+margin-top: 20px;
+}
+@media (max-width:600px){
+    .shape-container{
+        display:block;
+    }
+}
+/* Row for the shapes */
+.row {
+display: flex;
+justify-content: center;
+width: 100%;
+margin-bottom: 10px;
+}
+
+/* Rectangle shape */
+.rectangle1 {
+width: 500px;
+height: 300px; 
+background-color: #bac8d9;
+margin: 10px;
+padding: 10px; 
+overflow: auto; 
+box-sizing: border-box; 
+}
+
+/* unang shape yung sa booked */
+.rectangle1 h2 {
+font-size: 18px; 
+line-height: 1.2; 
+margin: 0; 
+}
+.rectangle {
+width: 100%;
+max-width: 400px;
+height: auto; 
+background-color: #bac8d9;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+margin: 10px auto;
+padding: 10px; 
+overflow: auto; 
+box-sizing: border-box; 
+}
+/* Circle shape */
+.circle {
+width: 300px;
+height: 300px;
+border-radius: 50%;
+background: conic-gradient(
+#ff6666 0% 15%,   /* January - 15% */
+#66b3ff 15% 40%,  /* February - 25% */
+#99ff99 40% 60%,  /* March - 20% */
+#ffcc99 60% 85%,  /* April - 25% */
+#ff99ff 85% 100%  /* May - 15% */
+);
+display: flex;
+justify-content: center;
+align-items: center;
+position: relative;
+}
+
+.label {
+position: absolute;
+color: white;
+font-weight: bold;
+font-size: 14px;
+}
+.january {
+transform: rotate(-60deg) translate(90px);
+}
+.february {
+transform: rotate(-30deg) translate(90px);
+}
+.march {
+transform: rotate(0deg) translate(90px);
+}
+.april {
+transform: rotate(30deg) translate(90px);
+}
+.may {
+transform: rotate(60deg) translate(90px);
+}
+.june {
+transform: rotate(90deg) translate(90px);
+}
+.july {
+transform: rotate(120deg) translate(90px);
+}
+.august {
+transform: rotate(150deg) translate(90px);
+}
+.september {
+transform: rotate(180deg) translate(90px);
+}
+.october {
+transform: rotate(210deg) translate(90px);
+}
+.november {
+transform: rotate(240deg) translate(90px);
+}
+.december {
+transform: rotate(270deg) translate(90px);
+}
+
+/* Square shape */
+.square {
+width: 200px;
+height: auto;
+background-color: #bac8d9;
+margin: 10px;
+border: 2px solid #cccccc;
+border-radius: 10px;
+padding: 10px;
+box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+text-align: center;
+position: relative;
+}
+.bar-container {
+display: flex;
+justify-content: space-between;
+align-items:flex-end;
+height: 100%;
+margin-top: 15px;
+}
+.bar-text {
+    color: rgb(251, 251, 250);
+    font-size: 12px;  
+}
+.bar {
+display:flex;
+flex-direction: column-reverse; 
+width: 30px; 
+background-color: #193940; 
+color: rgb(250, 250, 249);
+text-align: center;
+border-radius: 5px;
+transition: height 0.3s ease;
+position: relative; 
+margin-bottom: 70px;
+}
+
+.bar::after {
+content: ""; 
+display: block;
+padding-top: 5px; 
+}
+
+/* This is for the ratings part */
+
+h2, h3 {
+    text-align: center;
+    color: #333;
+}
+
+nav {
+    display: flex;
+    flex-direction: column; 
+    position: relative; 
+}
+
+.dropdown {
+    display: none; 
+    flex-direction: column; 
+    background-color: #25393d;
+    min-width: 100px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    margin-top: 5px;
+    transition: max-height 0.3s ease-in-out; 
+    overflow: hidden;  
+    max-height: 0;
+}
+
+.dropdown a {
+    color: #f2f2f2;
+    padding: 12px 16px;
+    text-decoration: none;
+}
+
+.dropdown a:hover {
+    background-color: #162c30; 
+}
+
+.dropdown-toggle {
+    cursor: pointer;  
+}
+
+.dropdown.show {
+    display: flex; 
+    max-height: 300px; 
+}
+.calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    max-width: 300px;
+    margin: auto;
+}
+.day {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+}
+.day.booked {
+    background-color: red;
+    color: white;
+}
+.rectangle h2{
+    font-size: 20px;
+}
+.nav-button {
+    cursor: pointer; 
+    font-size: 24px; 
+    padding: 5px 10px; 
+    margin: 0 5px; 
+    color: #333; 
+    transition: background-color 0.3s, color 0.3s; 
+}
+
+.nav-button:hover {
+    background-color: #ddd; 
+    color: #000; 
+}
+
+#monthYear {
+    font-weight: bold; 
+    font-size: 18px;
+}
+@media (max-width: 600px) {
+    .rectangle {
+        width: 95%; 
+        padding: 5px; 
+    }
+
+    .day {
+        width: 25px; 
+        height: 25px; 
+    }
+
+    .rectangle h2 {
+        font-size: 1.2rem; 
+    }
+
+    .nav-button {
+        font-size: 1.5rem; 
+    }
+
+    #monthYear {
+        font-size: 1rem; 
+    }
+}
+
+@media (max-width: 400px) {
+    .rectangle {
+        padding: 3px; 
+    }
+
+    .day {
+        width: 20px; 
+        height: 20px; 
+    }
+
+    .rectangle h2 {
+        font-size: 1rem; 
+    }
+
+    .nav-button {
+        font-size: 1.2rem; 
+    }
+
+    #monthYear {
+        font-size: 0.9rem; 
+    }
+}
